@@ -18,7 +18,6 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Framework :: FastClient",
     "License :: OSI Approved :: MIT License",
     "Topic :: Internet :: WWW/HTTP",
     "Development Status :: 2 - Pre-Alpha",
