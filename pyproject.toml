@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fastclient"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
     { name="Radoslaw Gryta", email="radek.gryta@gmail.com" },
 ]
@@ -45,7 +45,7 @@ fastclient = "fastclient"
 ####### BUMPV #######
 
 [tool.bumpversion]
-current_version = "0.0.1"
+current_version = "0.0.2"
 allow_dirty = true
 commit = true
 message = "[Version {new_version}]"
