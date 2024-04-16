@@ -1,0 +1,7 @@
+# Backend
+starlette
+
+# Clients
+yarl
+aiohttp
+urllib3

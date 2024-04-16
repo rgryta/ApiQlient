@@ -1,0 +1,117 @@
+[build-system]
+requires = ["setuptools>=67.4.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastclient"
+version = "0.0.1"
+authors = [
+    { name="Radoslaw Gryta", email="radek.gryta@gmail.com" },
+]
+description = "Quickly create REST clients"
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["rest", "api", "client", "framework"]
+classifiers = [
+    "Operating System :: OS Independent",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: FastClient",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Internet :: WWW/HTTP",
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Developers",
+]
+dynamic = ["dependencies", "optional-dependencies"]
+
+[project.urls]
+"Homepage" = "https://github.com/rgryta/FastClient"
+"Bug Tracker" = "https://github.com/rgryta/FastClient/issues"
+
+####### SETUPTOOLS #######
+
+[tool.setuptools.dynamic.dependencies]
+file = ["requirements.txt"]
+
+[tool.setuptools.dynamic.optional-dependencies]
+all = {file = ["requirements_all.txt"]}
+dev = {file = ["requirements_dev.txt"]}
+
+[tool.setuptools.package-dir]
+fastclient = "fastclient"
+
+####### BUMPV #######
+
+[tool.bumpversion]
+current_version = "0.0.1"
+allow_dirty = true
+commit = true
+message = "[Version {new_version}]"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
+####### BLACK #######
+
+[tool.black]
+line-length = 120
+preview = true
+
+####### COVERAGE #######
+
+[tool.coverage.run]
+source = ["fastclient/"]
+
+####### ISORT #######
+
+[tool.isort]
+profile = "black"
+line_length = 120
+length_sort = true
+atomic = true
+
+####### PYLINT #######
+
+[tool.pylint.main]
+disable = ["logging-fstring-interpolation"]
+output-format = "colorized"
+
+[tool.pylint.format]
+max-line-length = 120
+
+
+####### STAGING #######
+
+[tool.staging.steps]
+# Lint
+isort = { execute = "isort {flags} . tests", format = {flags = "flags"}}
+black = { execute = "black {flags} . tests", format = {flags = "flags"}}
+pylint = { execute = "pylint {package} tests", format = {package = "package"}}
+noprint = { execute = "noprint -ve {package} tests", format = {package = "package"}}
+# Test
+coverage = { prepare = "coverage run -m pytest -xv tests", execute = "coverage report -m --fail-under=30", cleanup = "coverage erase"}
+
+[tool.staging.stages.test]
+description = "Test the package"
+steps = [
+    {step = "coverage"},
+]
+
+[tool.staging.stages.format]
+description = "Reformat code"
+steps = [
+    {step = "isort"},
+    {step = "black"},
+]
+
+[tool.staging.stages.lint]
+description = "Check linting"
+format = {flags="--check", package="fastclient"}
+steps = [
+    {parallel = {steps = ["isort", "black", "pylint", "noprint"]}},
+]

@@ -1,0 +1,4 @@
+# JS -> Object parsing
+munch
+pydantic
+dataclass_wizard
