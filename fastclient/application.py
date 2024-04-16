@@ -150,7 +150,7 @@ class AsyncRequest(BaseRequest):
             """
             return self._from_dict(cls=cls, data=await self.json(content_type=None), none_error=none_error)
 
-        async def object(self, none_error: bool = False) -> dataclasses.dataclass | munch.Munch | pydantic.BaseModel:
+        async def object(self, *, none_error: bool = False) -> dataclasses.dataclass | munch.Munch | pydantic.BaseModel:
             """
             Return parsed response object
 
@@ -306,28 +306,28 @@ class FastClient(Starlette):  # pylint:disable=too-many-instance-attributes
 
     # Define "get", "head", "post", "put", "delete", "connect", "options", "trace", "patch" methods for hints
     def get(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.get(...)` instead")
 
     def head(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.head(...)` instead")
 
     def post(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.post(...)` instead")
 
     def put(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.put(...)` instead")
 
     def delete(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.delete(...)` instead")
 
     def connect(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.connect(...)` instead")
 
     def options(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.options(...)` instead")
 
     def trace(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.trace(...)` instead")
 
     def patch(self, path, **kwargs) -> Request | Coroutine[AsyncRequest]:  # pylint:disable=missing-function-docstring
-        raise NotImplementedError("Client not in context")
+        raise NotImplementedError("When defining paths use `@client.router.patch(...)` instead")
