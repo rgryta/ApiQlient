@@ -5,9 +5,9 @@ from dataclasses import dataclass
 from pydantic import Field, BaseModel
 from dataclass_wizard import JSONSerializable, json_field
 
-from fastclient import FastClient, ClientRouter
+from apiqlient import ApiQlient, ClientRouter
 
-client = FastClient(base_url="https://jsonplaceholder.typicode.com/")
+client = ApiQlient(base_url="https://jsonplaceholder.typicode.com/")
 router = ClientRouter(prefix="/todos")
 
 

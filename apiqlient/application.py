@@ -1,5 +1,5 @@
 """
-FastClient is a simple HTTP/HTTPS client
+ApiQlient is a simple HTTP/HTTPS client
 """
 
 from __future__ import annotations
@@ -42,7 +42,7 @@ class BaseRequest:  # pylint:disable=too-few-public-methods
 
     _response: ClientResponse | HTTPResponse = None
 
-    def __init__(self, dataclass, client: FastClient, method: str, url, **kwargs):
+    def __init__(self, dataclass, client: ApiQlient, method: str, url, **kwargs):
         self.cls = dataclass
         self._client = client
         self._method = method
@@ -105,7 +105,7 @@ class Request(BaseRequest):
 
     _response: HTTPResponse = None
 
-    def __init__(self, dataclass, client: FastClient, method: str, url, **kwargs):
+    def __init__(self, dataclass, client: ApiQlient, method: str, url, **kwargs):
         super().__init__(dataclass, client, method, url, **kwargs)
 
         self.method = getattr(type(client.client), "request")  # Get HTTP(S)ConnectionPool class' request method
@@ -162,7 +162,7 @@ class AsyncRequest(BaseRequest):
     _request: _RequestContextManager = None
     _response: ClientResponse = None
 
-    def __init__(self, dataclass, client: FastClient, method: str, url, **kwargs):
+    def __init__(self, dataclass, client: ApiQlient, method: str, url, **kwargs):
         super().__init__(dataclass, client, method, url, **kwargs)
 
         self.method = getattr(ClientSession, self._method.lower())
@@ -191,9 +191,9 @@ class AsyncRequest(BaseRequest):
         pass
 
 
-class FastClient(Starlette):  # pylint:disable=too-many-instance-attributes
+class ApiQlient(Starlette):  # pylint:disable=too-many-instance-attributes
     """
-    FastClient client
+    ApiQlient client
     """
 
     client: ClientSession | HTTPConnectionPool

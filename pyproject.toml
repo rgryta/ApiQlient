@@ -3,7 +3,7 @@ requires = ["setuptools>=67.4.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fastclient"
+name = "ApiQlient"
 version = "0.0.2"
 authors = [
     { name="Radoslaw Gryta", email="radek.gryta@gmail.com" },
@@ -27,8 +27,8 @@ classifiers = [
 dynamic = ["dependencies", "optional-dependencies"]
 
 [project.urls]
-"Homepage" = "https://github.com/rgryta/FastClient"
-"Bug Tracker" = "https://github.com/rgryta/FastClient/issues"
+"Homepage" = "https://github.com/rgryta/ApiQlient"
+"Bug Tracker" = "https://github.com/rgryta/ApiQlient/issues"
 
 ####### SETUPTOOLS #######
 
@@ -40,7 +40,7 @@ all = {file = ["requirements_all.txt"]}
 dev = {file = ["requirements_dev.txt"]}
 
 [tool.setuptools.package-dir]
-fastclient = "fastclient"
+apiqlient = "apiqlient"
 
 ####### BUMPV #######
 
@@ -64,7 +64,7 @@ preview = true
 ####### COVERAGE #######
 
 [tool.coverage.run]
-source = ["fastclient/"]
+source = ["apiqlient/"]
 
 ####### ISORT #######
 
@@ -110,7 +110,7 @@ steps = [
 
 [tool.staging.stages.lint]
 description = "Check linting"
-format = {flags="--check", package="fastclient"}
+format = {flags="--check", package="apiqlient"}
 steps = [
     {parallel = {steps = ["isort", "black", "pylint", "noprint"]}},
 ]
