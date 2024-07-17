@@ -11,9 +11,11 @@
 
 ## About
 
-Ever had a situation when you wanted to create a cyclic reference between two objects, but don't want to maintain a large singular file?
-You're tired of seeing "cyclic-import" errors? This package is for you!
-Simply "register" a class you want to share between different modules and you're pretty much good to go!
+Want to develop an easy-to-use API client library for your HTTP server? Maybe you're already using FastAPI and want to share dataclass libraries
+between your server and client projects with little to no maintenance involved?
+
+API Quick Client (or ApiQlient) is for you then. Attach custom serializable classes to your endpoints and allow your users
+to choose whether they want to use sync or async scheme. You don't need to set up anything else by yourself.
 
 See the [documentation](https://github.com/rgryta/ApiQlient/#Usage) for more information.
 
@@ -97,7 +99,7 @@ No obvious difference was spotted between using `dataclass_wizard`, `pydantic` o
 
 ### Installation
 
-Install virtual environment and cyclic_classes package in editable mode with dev dependencies.
+Install virtual environment and apiqlient package in editable mode with dev dependencies.
 
 ```bash
 python -m venv venv
