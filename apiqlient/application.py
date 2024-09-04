@@ -288,7 +288,7 @@ class ApiQlient(Starlette):  # pylint:disable=too-many-instance-attributes
         """
 
         def _path():
-            scope = {"type": "http", "path": path, "method": method}
+            scope = {"type": "http", "path": path, "method": method.upper()}
             routes = {Match.FULL: [], Match.PARTIAL: []}
             for route in self.routes:
                 match, _ = route.matches(scope=scope)
