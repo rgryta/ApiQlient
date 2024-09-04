@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ApiQlient"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
     { name="Radoslaw Gryta", email="radek.gryta@gmail.com" },
 ]
@@ -45,7 +45,7 @@ apiqlient = "apiqlient"
 ####### BUMPV #######
 
 [tool.bumpversion]
-current_version = "0.0.3"
+current_version = "0.0.4"
 allow_dirty = true
 commit = true
 message = "[Version {new_version}]"
